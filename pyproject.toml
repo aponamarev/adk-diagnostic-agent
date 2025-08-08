@@ -1,0 +1,61 @@
+[project]
+name = "diagnostic_agent"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Alexander Ponamarev", email = "alex.ponamaryov@gmail.com"},
+]
+dependencies = ["google-adk>=1.10.0"]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+[dependency-groups]
+dev = [
+    "pyright>=1.1.403",
+    "ruff>=0.12.7",
+]
+
+[tool.pyright]
+include = ["src"]
+reportGeneralTypeIssues = "error"
+reportUnusedVariable = "warning"
+reportUnusedImport = "warning"
+pythonVersion = "3.12"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "C",   # Pycodestyle (Code style, e.g. naming conventions)
+    "E",   # Pycodestyle (Errors, e.g. syntax errors)
+    "F",   # Pyflakes (Code errors, e.g. unused imports)
+    "I",   # isort (Import sorting)
+    "W",   # Pycodestyle (Warnings, e.g. indentation)
+    "PL",  # Pylint (Various checks for errors and code smells)
+    "N",   # pep8-naming (Naming conventions)
+    "D",   # pydocstyle (Docstring style)
+    "UP",  # pyupgrade (Modernizing code)
+    "FIX", # Fixable issues
+]
+ignore = [
+    "E501", # Line too long, handled by the formatter
+]
+pydocstyle.convention = "google"
+
+# This section allows ignoring specific linting rules for certain files.
+# It's useful for files that have special conventions, like __init__.py.
+[tool.ruff.lint.per-file-ignores]
+'__init__.py' = [
+    "E402", # Allow imports at the top level of the module
+    "F401", # Allow unused imports, as they are often used for module-level exports
+    "F403", # Allow wildcard imports, common in __init__.py for exposing an API
+    "F811", # Allow redefinition of names, as imports can be redefined
+    "D104", # Allow missing docsting in the module
+]
