@@ -1,0 +1,11 @@
+services:
+  diagnostic_agent:
+    build: .
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY:?Please set the GEMINI_API_KEY environment variable}
+    ports:
+      - "${DIAGNOSTIC_AGENT_PORT:-8000}:8000"
+    volumes:
+      - ./src:/app/src
+    # command: pdm run adk web src
+    command: pdm run adk web src --host 0.0.0.0

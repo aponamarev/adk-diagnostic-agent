@@ -1,9 +1,9 @@
 from google.adk.agents import LlmAgent
 from google.adk.tools import AgentTool
 
-from core.diagnostic_types.chief_complaint import ChiefComplaintType
+from core.diagnostic_types.chief_complaint_schema import ChiefComplaintSchema
 
-SCHEMA = ChiefComplaintType.model_json_schema()
+SCHEMA = ChiefComplaintSchema.model_json_schema()
 MODEL = "gemini-2.0-flash"
 PROMPT = """You are medical assistant agent that collects information about
 patient's chief complaint.
@@ -31,7 +31,7 @@ chief_complaint_agent = LlmAgent(
     model=MODEL,
     description="Agent that collects information about patient's chief complaint.",
     instruction=PROMPT.format(schema=SCHEMA),
-    output_schema=ChiefComplaintType,
+    output_schema=ChiefComplaintSchema,
     output_key="diagnostics:chief_complaint",
 )
 

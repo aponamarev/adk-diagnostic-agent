@@ -11,12 +11,11 @@ readme = "README.md"
 license = {text = "MIT"}
 
 
-[tool.pdm]
-distribution = false
 [dependency-groups]
 dev = [
     "pyright>=1.1.403",
     "ruff>=0.12.7",
+    "debugpy>=1.8.16",
 ]
 
 [tool.pyright]
@@ -59,3 +58,5 @@ pydocstyle.convention = "google"
     "F811", # Allow redefinition of names, as imports can be redefined
     "D104", # Allow missing docsting in the module
 ]
+[tool.pdm]
+distribution = false

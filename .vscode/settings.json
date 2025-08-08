@@ -5,6 +5,7 @@
     "files.autoSave": "onFocusChange",
     "editor.defaultFormatter": "charliermarsh.ruff",
     "python.analysis.indexing": true,
+    "python.analysis.autoImportCompletions": true,
     "editor.codeActionsOnSave": {
         "source.fixAll": "explicit",
         "source.organizeImports": "explicit",

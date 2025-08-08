@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     model_name: str = "gemini-2.0-flash"
     model_temperature: float = 0.01
     diagnostic_field: str = "diagnostic_information"
+    extracted_information_field: str = "extracted_information"
     missing_information_field: str = "missing_information"
 
 
